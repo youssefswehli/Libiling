@@ -1,60 +1,541 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Libiling — Learn real Libyan Arabic.">
-<title>Libiling 🇱🇾 — Learn Libyan Arabic</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#071c16">
+
+<title>Libiling — Learn Libyan Arabic</title>
+
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#06100d;color:#f5fff9;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button{font:inherit;cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:0 22px}
-nav{position:sticky;top:0;z-index:5;background:#06100ddd;backdrop-filter:blur(16px);border-bottom:1px solid #19342a}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:900}.logo b{color:#20e68d}
-.nav a{color:#a9beb5;text-decoration:none;margin-left:22px}.nav a:hover{color:#20e68d}
-.btn{border:0;border-radius:14px;padding:13px 19px;font-weight:850;background:#20e68d;color:#04120d}.btn.dark{background:#12261f;color:#f5fff9;border:1px solid #2a493e}
-.hero{padding:82px 0 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
-.badge{display:inline-block;padding:8px 12px;border-radius:99px;background:#0d281f;color:#20e68d;border:1px solid #1d4a39;font-weight:700}
-h1{font-size:clamp(48px,7vw,78px);line-height:.98;margin:18px 0}.hero p{font-size:19px;color:#a8bdb5;line-height:1.6;max-width:600px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-.phone{background:#0b1915;border:1px solid #29483d;border-radius:34px;padding:15px;box-shadow:0 25px 80px #0008;transform:rotate(2deg)}
-.screen{border-radius:25px;background:linear-gradient(160deg,#10251e,#07110e);padding:22px;min-height:510px}.top{display:flex;justify-content:space-between;color:#9db6ac}.streak{margin-top:20px;background:#132b23;border:1px solid #23493c;padding:16px;border-radius:18px}.bar{height:8px;background:#1d372e;border-radius:20px;margin-top:10px}.bar i{display:block;width:48%;height:100%;background:#20e68d;border-radius:20px}
-.mini{margin-top:15px;background:#10221c;padding:18px;border-radius:18px}.mini h3{margin:4px 0}.phrase{font-size:31px;font-weight:900;margin:20px 0 5px;text-align:center}.roman{text-align:center;color:#20e68d}.meaning{text-align:center;color:#a8bdb5}
-section{padding:70px 0}.center{text-align:center}.muted{color:#9fb5ad}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.card{background:#0d1d18;border:1px solid #1d3930;border-radius:20px;padding:24px}.icon{font-size:30px}.card h3{margin:12px 0 8px}.card p{color:#9fb5ad;line-height:1.55}
-.demo{max-width:700px;margin:30px auto 0;background:#0d1d18;border:1px solid #25493c;border-radius:24px;padding:25px}.answers{display:grid;gap:10px;margin-top:20px}.answer{background:#12261f;color:white;border:1px solid #29483d;border-radius:14px;padding:15px;text-align:left}.answer:hover{border-color:#20e68d}.correct{border-color:#20e68d!important;background:#103b2c!important}
-footer{border-top:1px solid #19342a;padding:35px 0;color:#8ea69d;text-align:center}
-@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:55px}.cards{grid-template-columns:1fr}.phone{max-width:420px;margin:auto}.nav a{display:none}h1{font-size:54px}}
+
+:root{--bg:#071c16;--green:#8ee6a6;--text:#f4fff6;--muted:#a9c8b2;--line:#244b3a}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{margin:0;background:radial-gradient(ellipse at top right,#103e2c,transparent 38%),var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.55}
+
+.wrap{width:min(1100px,92%);margin:auto}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+
+.brand{font-size:1.35rem;font-weight:900}
+
+.brand span{color:var(--green)}
+
+.navlinks{display:flex;gap:20px;color:var(--muted)}
+
+.navlinks a{color:inherit;text-decoration:none}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:60px 0}
+
+.eyebrow{display:inline-block;border:1px solid #316047;border-radius:99px;padding:6px 12px;color:var(--green);font-size:.8rem;font-weight:800}
+
+h1{font-size:clamp(2.8rem,7vw,5rem);line-height:1;letter-spacing:-.06em}
+
+h1 em{color:var(--green);font-style:normal}
+
+p{color:var(--muted)}
+
+.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer;background:var(--green);color:#062015;display:inline-block}
+
+.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+
+.phone,.panel,.feature,.phrasecard{background:#0c281e;border:1px solid var(--line);border-radius:18px;padding:20px}
+
+.lesson{background:#123b2a;border-radius:16px;padding:20px}
+
+.arabic{font-size:2.3rem;direction:rtl;text-align:center;font-weight:900}
+
+.pron{text-align:center;color:var(--muted)}
+
+.section{padding:45px 0}
+
+.sectionhead{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:22px}
+
+h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.toolbar{display:grid;grid-template-columns:1fr 220px;gap:12px;margin-bottom:15px}
+
+.field{width:100%;border:1px solid #2a5540;background:#081e16;color:var(--text);border-radius:12px;padding:13px;font:inherit}
+
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+
+.stat{background:#0c281d;border:1px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--muted)}
+
+.stat strong{color:var(--green)}
+
+.phrasegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+.phrasecard .cat{font-size:.75rem;color:var(--green);font-weight:800}
+
+.phrasecard .ar{direction:rtl;text-align:right;font-size:1.5rem;font-weight:850;margin:10px 0}
+
+.phrasecard .pron{text-align:left;font-size:.85rem}
+
+.phrasecard button{margin-top:10px;background:transparent;border:1px solid #315a42;color:var(--green);padding:8px;border-radius:9px;cursor:pointer}
+
+.quizbox{max-width:720px;margin:auto}
+
+.quizprompt{background:#123b2a;border:1px solid #2c6848;border-radius:18px;padding:22px;margin:15px 0;text-align:center}
+
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.answer{border:1px solid #2b503a;background:#0a2118;color:var(--text);padding:13px;border-radius:12px;text-align:left;font:inherit;cursor:pointer}
+
+.answer.correct{border-color:#62d98a;background:#153f29}
+
+.answer.wrong{border-color:#fa8787;background:#412323}
+
+@media(max-width:760px){.hero{grid-template-columns:1fr}.features{grid-template-columns:1fr}.phrasegrid{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}}
+
+@media(max-width:470px){.phrasegrid,.answers{grid-template-columns:1fr}.navlinks{gap:10px;font-size:.85rem}}
+
 </style>
+
 </head>
+
 <body>
-<nav><div class="wrap nav"><div class="logo">Libi<span>ling</span> 🇱🇾</div><div><a href="#features">Features</a><a href="#lesson">Try it</a><a href="#about">About</a><button class="btn" onclick="start()">Start learning</button></div></div></nav>
+
+<header class="wrap nav">
+
+<a class="brand" href="#home" style="color:inherit;text-decoration:none">Libi<span>ling.</span></a>
+
+<nav class="navlinks">
+
+<a href="#phrases">Phrasebook</a>
+
+<a href="#practice">Practice</a>
+
+<a href="#about">About</a>
+
+</nav>
+
+</header>
 
 <main>
-<section class="wrap hero">
-<div><span class="badge">🇱🇾 Made for Libyan Arabic</span>
-<h1>Speak Libyan.<br><span style="color:#20e68d">Speak like a local.</span></h1>
-<p>Libiling makes learning Libyan Arabic fun with short lessons, real phrases, listening practice, quizzes, XP and streaks.</p>
-<div class="actions"><button class="btn" onclick="start()">Start learning →</button><button class="btn dark" onclick="document.querySelector('#lesson').scrollIntoView()">Try a lesson</button></div></div>
-<div class="phone"><div class="screen"><div class="top"><b>Libiling</b><span>🇱🇾</span></div><div class="streak">🔥 <b>5 day streak</b><div class="bar"><i></i></div><small>120 / 300 XP</small></div><div class="mini"><small style="color:#20e68d">LESSON 1</small><h3>Greetings & Introductions</h3><div class="phrase">شن الجو؟</div><div class="roman">Shin aljaw?</div><div class="meaning">How are you?</div><button class="btn" style="width:100%;margin-top:18px" onclick="document.querySelector('#lesson').scrollIntoView()">Continue →</button></div></div></div>
+
+<section class="wrap hero" id="home">
+
+<div>
+
+<span class="eyebrow">🇱🇾 SPEAK LIKE YOU'RE HERE</span>
+
+<h1>Learn Libyan.<br><em>Talk naturally.</em></h1>
+
+<p>Learn everyday Libyan Arabic with Arabic writing, pronunciation, English meanings, searchable topics, and quizzes.</p>
+
+<div class="actions">
+
+<a class="btn" href="#phrases">Explore 300 phrases ↓</a>
+
+<a class="btn secondary" href="#practice">Start a quiz</a>
+
+</div>
+
+</div>
+
+<div class="phone">
+
+<div class="lesson">
+
+<span style="color:var(--green)">EVERYDAY LIBYAN</span>
+
+<div class="arabic">شن الجو؟</div>
+
+<div class="pron">Shin il-jaw?</div>
+
+<p style="text-align:center">What's up?</p>
+
+</div>
+
+</div>
+
 </section>
 
-<section id="features"><div class="wrap center"><h2>Everything built around Libyan 🇱🇾</h2><p class="muted">No generic textbook Arabic. Real everyday Libyan phrases.</p>
-<div class="cards">
-<div class="card"><div class="icon">🗣️</div><h3>Speak</h3><p>Practice pronunciation and learn phrases you can actually use with Libyans.</p></div>
-<div class="card"><div class="icon">🔥</div><h3>Streaks & XP</h3><p>Keep your streak alive, earn XP and unlock new lessons.</p></div>
-<div class="card"><div class="icon">🎧</div><h3>Listen</h3><p>Hear each phrase, then test yourself with listening and matching exercises.</p></div>
-</div></div></section>
+<section class="wrap section">
 
-<section id="lesson"><div class="wrap center"><h2>Try your first Libiling lesson</h2><p class="muted">What does this Libyan phrase mean?</p>
-<div class="demo"><div class="phrase">شن الجو؟</div><div class="roman">Shin aljaw?</div><div class="meaning">🇱🇾 Libyan Arabic</div>
-<div class="answers"><button class="answer" onclick="check(this,false)">What's your name?</button><button class="answer" onclick="check(this,true)">How are you?</button><button class="answer" onclick="check(this,false)">Where are you?</button><button class="answer" onclick="check(this,false)">Good morning</button></div><p id="feedback" class="muted"></p></div></div></section>
+<div class="features">
 
-<section id="about"><div class="wrap center"><h2>Learn Libyan. One phrase at a time.</h2><p class="muted">Start with greetings, then move into food, family, school, shopping, football, travel and everyday conversation.</p><button class="btn" onclick="start()">Start Libiling 🇱🇾</button></div></section>
+<article class="feature"><h3>💬 Real phrases</h3><p>Arabic, pronunciation, and English meanings.</p></article>
+
+<article class="feature"><h3>🔎 Search</h3><p>Find phrases and filter by category.</p></article>
+
+<article class="feature"><h3>🎯 Practice</h3><p>Test yourself and earn XP.</p></article>
+
+</div>
+
+</section>
+
+<section class="wrap section" id="phrases">
+
+<div class="sectionhead">
+
+<div><span class="eyebrow">YOUR PHRASEBOOK</span><h2>300 ways to say it.</h2><p>Search Arabic, pronunciation, English, or a topic.</p></div>
+
+<span class="stat"><strong id="count">300</strong> phrases</span>
+
+</div>
+
+<div class="toolbar">
+
+<input class="field" id="search" placeholder="Search phrases…" aria-label="Search phrases">
+
+<select class="field" id="category" aria-label="Category"><option value="all">All categories</option></select>
+
+</div>
+
+<div class="stats"><div class="stat">🇱🇾 Libyan Arabic</div><div class="stat"><strong id="shown">0</strong> shown</div></div>
+
+<div class="phrasegrid" id="phrasegrid"></div>
+
+<div class="actions"><button class="btn secondary" id="more" style="display:none">Show more</button></div>
+
+</section>
+
+<section class="wrap section" id="practice">
+
+<div class="sectionhead"><div><span class="eyebrow">QUICK CHALLENGE</span><h2>Lock in your Libyan.</h2><p>Choose the correct English meaning.</p></div></div>
+
+<div class="panel quizbox">
+
+<div>Question <strong id="quiznum">1</strong> <span style="float:right">⭐ XP: <strong id="xp">0</strong></span></div>
+
+<div class="quizprompt"><div id="quizar" class="arabic" dir="rtl">شن الجو؟</div><div id="quizpron" class="pron">Shin il-jaw?</div></div>
+
+<div class="answers" id="answers"></div>
+
+<p id="feedback" aria-live="polite"></p>
+
+<button class="btn" id="next">Next question →</button>
+
+<button class="btn secondary" id="restart">Restart score</button>
+
+</div>
+
+</section>
+
+<section class="wrap section" id="about">
+
+<div class="panel"><span class="eyebrow">ABOUT LIBILING</span><h2>Learn everyday Libyan.</h2><p>Libyan Arabic changes across cities and families. Pronunciations are approximate and can vary by region.</p></div>
+
+</section>
+
 </main>
-<footer>Libiling 🇱🇾 · Learn Libyan Arabic</footer>
+
+<footer class="wrap" style="padding:25px 0;border-top:1px solid var(--line)">Libiling — Learn Libyan Arabic 🇱🇾</footer>
+
 <script>
-function check(el,ok){document.querySelectorAll('.answer').forEach(x=>x.disabled=true);el.classList.add('correct');document.getElementById('feedback').textContent=ok?'Correct! 🔥 +20 XP':'Not quite — keep learning!';if(!ok)el.classList.remove('correct')}
-function start(){document.querySelector('#lesson').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.querySelector('.answer').focus(),500)}
-</script>
-</body>
-</html>
+
+const phrases = [
+
+{"category":"Greetings","ar":"السلام عليكم","pron":"as-salaamu ʿalaykum","en":"Peace be upon you"},
+
+{"category":"Greetings","ar":"وعليكم السلام","pron":"wa ʿalaykum is-salaam","en":"And peace be upon you"},
+
+{"category":"Greetings","ar":"شن الجو؟","pron":"shin il-jaw?","en":"What's up?"},
+
+{"category":"Greetings","ar":"كيف حالك؟","pron":"keef haalak?","en":"How are you?"},
+
+{"category":"Greetings","ar":"كيف حالك يا غالي؟","pron":"keef haalak ya ghaali?","en":"How are you, dear?"},
+
+{"category":"Greetings","ar":"الحمد لله","pron":"alhamdulillah","en":"Thank God"},
+
+{"category":"Greetings","ar":"تمام","pron":"tamaam","en":"Fine / okay"},
+
+{"category":"Greetings","ar":"كويس","pron":"kwayyis","en":"Good"},
+
+{"category":"Greetings","ar":"شن أخبارك؟","pron":"shin akhbaarak?","en":"What's your news?"},
+
+{"category":"Greetings","ar":"شن صار؟","pron":"shin saar?","en":"What happened?"},
+
+{"category":"Greetings","ar":"صباح الخير","pron":"sabaah il-kheer","en":"Good morning"},
+
+{"category":"Greetings","ar":"صباح النور","pron":"sabaah in-noor","en":"Good morning (reply)"},
+
+{"category":"Greetings","ar":"مسا الخير","pron":"masa il-kheer","en":"Good evening"},
+
+{"category":"Greetings","ar":"تصبح على خير","pron":"tisbah ʿala kheer","en":"Good night"},
+
+{"category":"Greetings","ar":"نشوفك بعدين","pron":"nshoofak baʿdeen","en":"See you later"},
+
+{"category":"Greetings","ar":"مع السلامة","pron":"maʿa is-salaama","en":"Goodbye"},
+
+{"category":"Greetings","ar":"أهلا وسهلا","pron":"ahlan wa sahlan","en":"Welcome"},
+
+{"category":"Greetings","ar":"نورت","pron":"nawwart","en":"You brightened the place"},
+
+{"category":"Greetings","ar":"شن حوالك؟","pron":"shin hawaalak?","en":"How are things?"},
+
+{"category":"Greetings","ar":"منور يا غالي","pron":"mnawwar ya ghaali","en":"Welcome, dear"},
+
+{"category":"Polite phrases","ar":"شكراً","pron":"shukran","en":"Thank you"},
+
+{"category":"Polite phrases","ar":"بارك الله فيك","pron":"baarak Allah feek","en":"God bless you"},
+
+{"category":"Polite phrases","ar":"يعطيك الصحة","pron":"yaʿteek is-sihha","en":"Thanks / well done"},
+
+{"category":"Polite phrases","ar":"لو سمحت","pron":"law samaht","en":"Please / excuse me"},
+
+{"category":"Polite phrases","ar":"سامحني","pron":"saamihni","en":"Forgive me"},
+
+{"category":"Polite phrases","ar":"ما عليهش","pron":"ma ʿaleesh","en":"No worries"},
+
+{"category":"Polite phrases","ar":"عفواً","pron":"ʿafwan","en":"You're welcome"},
+
+{"category":"Polite phrases","ar":"معلش","pron":"maʿlesh","en":"It's okay / never mind"},
+
+{"category":"Polite phrases","ar":"ربي يخليك","pron":"rabbi ykhaleek","en":"May God keep you"},
+
+{"category":"Polite phrases","ar":"الله يسلمك","pron":"Allah ysallmak","en":"God keep you safe"},
+
+{"category":"Questions","ar":"شن اسمك؟","pron":"shin ismak?","en":"What's your name?"},
+
+{"category":"Questions","ar":"وينك؟","pron":"weenak?","en":"Where are you?"},
+
+{"category":"Questions","ar":"وين ماشي؟","pron":"ween maashi?","en":"Where are you going?"},
+
+{"category":"Questions","ar":"شن تبي؟","pron":"shin tبي?","en":"What do you want?"},
+
+{"category":"Questions","ar":"علاش؟","pron":"ʿalaash?","en":"Why?"},
+
+{"category":"Questions","ar":"شن معناها؟","pron":"shin maʿnaaha?","en":"What does it mean?"},
+
+{"category":"Questions","ar":"قداش؟","pron":"qaddash?","en":"How much / how many?"},
+
+{"category":"Questions","ar":"من وين إنت؟","pron":"min ween inta?","en":"Where are you from?"},
+
+{"category":"Questions","ar":"شن الوقت؟","pron":"shin il-waqt?","en":"What time is it?"},
+
+{"category":"Questions","ar":"متى؟","pron":"mata?","en":"When?"},
+
+{"category":"Food and drink","ar":"نبي ماء","pron":"nبي may","en":"I want water"},
+
+{"category":"Food and drink","ar":"نبي قهوة","pron":"nبي gahwa","en":"I want coffee"},
+
+{"category":"Food and drink","ar":"نبي شاهي","pron":"nبي shaahi","en":"I want tea"},
+
+{"category":"Food and drink","ar":"جوعان","pron":"jooʿaan","en":"I'm hungry"},
+
+{"category":"Food and drink","ar":"عطشان","pron":"ʿatshaan","en":"I'm thirsty"},
+
+{"category":"Food and drink","ar":"الأكل حلو","pron":"il-akel hilw","en":"The food is nice"},
+
+{"category":"Food and drink","ar":"بالهنا والشفا","pron":"bil-hana wish-shifa","en":"Enjoy your meal"},
+
+{"category":"Food and drink","ar":"الحساب لو سمحت","pron":"il-hisaab law samaht","en":"The bill, please"},
+
+{"category":"Food and drink","ar":"من غير سكر","pron":"min gheir sukkar","en":"Without sugar"},
+
+{"category":"Food and drink","ar":"نبي سندويتش","pron":"nبي sandwich","en":"I want a sandwich"},
+
+{"category":"Shopping","ar":"بقداش هذا؟","pron":"bqaddash haadha?","en":"How much is this?"},
+
+{"category":"Shopping","ar":"غالي واجد","pron":"ghaali waajid","en":"It's very expensive"},
+
+{"category":"Shopping","ar":"فيه أرخص؟","pron":"feeh arkhas?","en":"Is there a cheaper one?"},
+
+{"category":"Shopping","ar":"نبي هذا","pron":"nبي haadha","en":"I want this"},
+
+{"category":"Shopping","ar":"ما نبيش هذا","pron":"ma nbeesh haadha","en":"I don't want this"},
+
+{"category":"Shopping","ar":"عندك لون ثاني؟","pron":"ʿandak lawn thaani?","en":"Do you have another colour?"},
+
+{"category":"Shopping","ar":"نقدر نجربه؟","pron":"niqdar nijarribah?","en":"Can I try it?"},
+
+{"category":"Shopping","ar":"عندك فكة؟","pron":"ʿandak fakka?","en":"Do you have change?"},
+
+{"category":"Shopping","ar":"خلاص خذيت","pron":"khalaas khdeet","en":"Okay, I'll take it"},
+
+{"category":"Shopping","ar":"شكراً، بس نتفرج","pron":"shukran, bas nitfarraj","en":"Thanks, I'm just looking"},
+
+{"category":"Directions","ar":"وين الشارع؟","pron":"ween ish-shaariʿ?","en":"Where is the street?"},
+
+{"category":"Directions","ar":"وين أقرب جامع؟","pron":"ween aqrab jaamiʿ?","en":"Where is the nearest mosque?"},
+
+{"category":"Directions","ar":"امشي دغري","pron":"imshi doghri","en":"Go straight"},
+
+{"category":"Directions","ar":"دور على اليمين","pron":"door ʿal-yameen","en":"Turn right"},
+
+{"category":"Directions","ar":"دور على اليسار","pron":"door ʿal-yisaar","en":"Turn left"},
+
+{"category":"Directions","ar":"قريب من هني","pron":"qareeb min hni","en":"It's near here"},
+
+{"category":"Directions","ar":"بعيد واجد؟","pron":"bʿeed waajid?","en":"Is it very far?"},
+
+{"category":"Directions","ar":"وقف هني","pron":"waqqaf hni","en":"Stop here"},
+
+{"category":"Directions","ar":"ضعت في الطريق","pron":"diʿt fit-tareeq","en":"I got lost"},
+
+{"category":"Directions","ar":"وريني في الخريطة","pron":"warreeni fil-khareeta","en":"Show me on the map"},
+
+{"category":"Time and plans","ar":"توا","pron":"tawwa","en":"Now"},
+
+{"category":"Time and plans","ar":"بعد شوية","pron":"baʿd shwayya","en":"In a little while"},
+
+{"category":"Time and plans","ar":"بكرة","pron":"bukra","en":"Tomorrow"},
+
+{"category":"Time and plans","ar":"امبارح","pron":"imbaarih","en":"Yesterday"},
+
+{"category":"Time and plans","ar":"شن الوقت؟","pron":"shin il-waqt?","en":"What time is it?"},
+
+{"category":"Time and plans","ar":"متأخرين","pron":"mtaakhreen","en":"We're late"},
+
+{"category":"Time and plans","ar":"بكري واجد","pron":"bakri waajid","en":"Very early"},
+
+{"category":"Time and plans","ar":"نشوفك بعدين","pron":"nshoofak baʿdeen","en":"See you later"},
+
+{"category":"Time and plans","ar":"عندي موعد","pron":"ʿandi mawʿid","en":"I have an appointment"},
+
+{"category":"Time and plans","ar":"خلينا نتلاقوا بكرة","pron":"khallina nitlaaqaw bukra","en":"Let's meet tomorrow"},
+
+{"category":"School","ar":"وين المدرسة؟","pron":"ween il-madrasa?","en":"Where is the school?"},
+
+{"category":"School","ar":"عندي واجب","pron":"ʿandi waajib","en":"I have homework"},
+
+{"category":"School","ar":"ما فهمتش","pron":"ma fhemtish","en":"I didn't understand"},
+
+{"category":"School","ar":"فهمت توا","pron":"fhemt tawwa","en":"I understand now"},
+
+{"category":"School","ar":"عاود قولها","pron":"ʿaawed goolha","en":"Say it again"},
+
+{"category":"School","ar":"شن معناها؟","pron":"shin maʿnaaha?","en":"What does it mean?"},
+
+{"category":"School","ar":"عندي امتحان","pron":"ʿandi imtihaan","en":"I have an exam"},
+
+{"category":"School","ar":"نسيت كتابي","pron":"nseet kitaabi","en":"I forgot my book"},
+
+{"category":"School","ar":"ممكن تساعدني؟","pron":"mumkin tsaʿidni?","en":"Can you help me?"},
+
+{"category":"School","ar":"كملت الواجب","pron":"kammalt il-waajib","en":"I finished the homework"},
+
+{"category":"Friends","ar":"وين الشباب؟","pron":"ween ish-shabaab?","en":"Where are the guys?"},
+
+{"category":"Friends","ar":"تعال معانا","pron":"taʿaal maʿaana","en":"Come with us"},
+
+{"category":"Friends","ar":"يلا بينا","pron":"yalla beena","en":"Let's go"},
+
+{"category":"Friends","ar":"شن رايك؟","pron":"shin raayak?","en":"What do you think?"},
+
+{"category":"Friends","ar":"فكرة حلوة","pron":"fikra hilwa","en":"Nice idea"},
+
+{"category":"Friends","ar":"والله صح","pron":"wallahi sahh","en":"Honestly, true"},
+
+{"category":"Friends","ar":"بالله عليك؟","pron":"billahi ʿaleek?","en":"Seriously?"},
+
+{"category":"Friends","ar":"نضحك معاك","pron":"nid-hak maʿaak","en":"I'm joking with you"},
+
+{"category":"Friends","ar":"ما تزعلش","pron":"ma tzʿalsh","en":"Don't be upset"},
+
+{"category":"Friends","ar":"نشوفك قريب","pron":"nshoofak qareeb","en":"See you soon"},
+
+{"category":"Feelings","ar":"فرحان واجد","pron":"farhaan waajid","en":"I'm very happy"},
+
+{"category":"Feelings","ar":"تعبان شوية","pron":"taʿbaan shwayya","en":"I'm a little tired"},
+
+{"category":"Feelings","ar":"بردان","pron":"bardaan","en":"I'm cold"},
+
+{"category":"Feelings","ar":"سخون عليّ","pron":"sukhoon ʿalayya","en":"I'm feeling hot"},
+
+{"category":"Feelings","ar":"مقلق شوية","pron":"mqalaq shwayya","en":"I'm a little worried"},
+
+{"category":"Feelings","ar":"مبسوط اليوم","pron":"mabsoot il-yoom","en":"I'm happy today"},
+
+{"category":"Feelings","ar":"مش فاهم","pron":"mish faahim","en":"I don't understand"},
+
+{"category":"Feelings","ar":"خايف شوية","pron":"khaayif shwayya","en":"I'm a little scared"},
+
+{"category":"Feelings","ar":"رايق اليوم","pron":"raayeq il-yoom","en":"I'm relaxed today"},
+
+{"category":"Feelings","ar":"الحمد لله كويس","pron":"alhamdulillah kwayyis","en":"Thank God, I'm good"},
+
+{"category":"Transport","ar":"نبي تاكسي","pron":"nبي taxi","en":"I need a taxi"},
+
+{"category":"Transport","ar":"وين موقف الباص؟","pron":"ween mawqif il-baas?","en":"Where is the bus stop?"},
+
+{"category":"Transport","ar":"قداش للمطار؟","pron":"qaddash lil-mataar?","en":"How much to the airport?"},
+
+{"category":"Transport","ar":"وقف هنا بالله","pron":"waqqaf hina billahi","en":"Stop here, please"},
+
+{"category":"Transport","ar":"امشي للمركز","pron":"imshi lil-markaz","en":"Go to the centre"},
+
+{"category":"Transport","ar":"الطريق زحمة","pron":"it-tareeq zahma","en":"The road is busy"},
+
+{"category":"Transport","ar":"السيارة واقفة","pron":"is-sayyaara waaqfa","en":"The car is stopped"},
+
+{"category":"Transport","ar":"نبي نركب","pron":"nبي nirkab","en":"I want to get in"},
+
+{"category":"Transport","ar":"وصلنا؟","pron":"wasalna?","en":"Have we arrived?"},
+
+{"category":"Transport","ar":"وين المحطة؟","pron":"ween il-mahatta?","en":"Where is the station"},
+
+{"category":"Home","ar":"افتح الباب","pron":"iftah il-baab","en":"Open the door"},
+
+{"category":"Home","ar":"سكر الشباك","pron":"sakkir ish-shibbaak","en":"Close the window"},
+
+{"category":"Home","ar":"الدار كبيرة","pron":"id-daar kbeera","en":"The house is big"},
+
+{"category":"Home","ar":"وين المفتاح؟","pron":"ween il-miftaah?","en":"Where is the key?"},
+
+{"category":"Home","ar":"النور طافي","pron":"in-noor taafi","en":"The light is off"},
+
+{"category":"Home","ar":"شغل الضو","pron":"shaghel id-daw","en":"Turn on the light"},
+
+{"category":"Home","ar":"رتب غرفتك","pron":"rattib ghurftek","en":"Tidy your room"},
+
+{"category":"Home","ar":"الأكل في المطبخ","pron":"il-akel fil-matbakh","en":"The food is in the kitchen"},
+
+{"category":"Home","ar":"نبي نرقد","pron":"nبي nirqad","en":"I want to sleep"},
+
+{"category":"Home","ar":"الجو في الدار بارد","pron":"il-jaw fid-daar baarid","en":"It's cold in the house"},
+
+{"category":"Weather","ar":"الجو حلو اليوم","pron":"il-jaw hilw il-yoom","en":"The weather is nice today"},
+
+{"category":"Weather","ar":"فيه شمس","pron":"feeh shams","en":"It's sunny"},
+
+{"category":"Weather","ar":"الدنيا تمطر","pron":"id-dinya timtar","en":"It's raining"},
+
+{"category":"Weather","ar":"فيه ريح","pron":"feeh reeH","en":"It's windy"},
+
+{"category":"Weather","ar":"الجو بارد","pron":"il-jaw baarid","en":"It's cold"},
+
+{"category":"Weather","ar":"الجو سخون","pron":"il-jaw sukhoon","en":"It's hot"},
+
+{"category":"Weather","ar":"شكلها بتمطر","pron":"shaklha bitimtar","en":"Looks like it's going to rain"},
+
+{"category":"Weather","ar":"السماء مغيمة","pron":"is-sama magheema","en":"The sky is cloudy"},
+
+{"category":"Weather","ar":"الجو مغبر","pron":"il-jaw mghabbar","en":"It's dusty"},
+
+{"category":"Weather","ar":"شن الجو غدوة؟","pron":"shin il-jaw ghodwa?","en":"What's the weather tomorrow?"},
+
+{"category":"Health","ar":"مش حاس روحي كويس","pron":"mish haas roohi kwayyis","en":"I don't feel well"},
+
+{"category":"Health","ar":"راسي يوجعني","pron":"raasi yuwjaʿni","en":"My head hurts"},
+
+{"category":"Health","ar":"بطني توجعني","pron":"batni tuwjaʿni","en":"My stomach hurts"},
+
+{"category":"Health","ar":"نبي دكتور","pron":"nبي doctor","en":"I need a doctor"},
+
+{"category":"Health","ar":"وين الصيدلية؟","pron":"ween is-saydaliyya?","en":"Where is the pharmacy"},
+
+{"category":"Health","ar":"عندي حساسية","pron":"ʿandi hasaasiya","en":"I have an allergy"},
+
+{"category":"Health","ar":"توا خير","pron":"tawwa kheer","en":"Better now"},
+
+{"category":"Health","ar":"نبي نرتاح","pron":"nبي nirtaah","en":"I need to rest"},
+
+{"category":"Health","ar":"عندك ماء؟","pron":"ʿandak may?","en":"Do you have water?"},
+
+{"category":"Health","ar":"اتصل بالإسعاف","pron":"ittasil bil-isʿaaf","en":"Call an ambulance"},
